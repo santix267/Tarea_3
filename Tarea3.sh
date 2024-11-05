@@ -12,7 +12,7 @@ for i in {1..5}
   fi
  #Para encontrar porcentaje de memoria y disco libre encontramos la memoria/disco libre, la multiplicamos *100 y se divide para el total de la misma 
  p_memoria_libre=$(($(free | grep Mem | awk '{print $4}')* 100 / $(free | grep Mem | awk '{print $2}'))) #Se usa free para ver datos varios incluido memoria, grep para filtrar aquellos de memoria y awk para tomar los parametros necesarios, para la libre es  el 4to parametro y para la total es el 2d0 parametro
- p_disco_libre=$(($(df / | tail -1 | awk '{print $4}') * 100 / $(df / | tail -1 | awk '{print $2}')))#Se usa df para ver datos varios incluido disco, tail -1 por que la ultima fila pertenece a disco y awk para tomar los parametros necesarios, para la libre es  el 4to parametro y para la total es el 2d0 parametro
+ p_disco_libre=$(($(df / | tail -1 | awk '{print $4}') * 100 / $(df / | tail -1 | awk '{print $2}'))) #Se usa df para ver datos varios incluido disco, tail -1 por que la ultima fila pertenece a disco y awk para tomar los parametros necesarios, para la libre es  el 4to parametro y para la total es el 2d0 parametro
 
 #Ya recolectado todos los datos se ingresa una linea a monitoreo.txt con los datos obtenidos en el formato de la primera fila
  echo "$((i * 60))    $cpu    $p_memoria_libre    $p_disco_libre" >> monitoreo.txt
